@@ -1,0 +1,23 @@
+<!-- templates/edit_article.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Article</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ request.url_for('static', path='style.css') }}" />
+</head>
+<body>
+<main class="content-wrap narrow">
+  <h2 class="section-title">Edit: {{ article.title }}</h2>
+  <form method="post" class="form">
+    <label>Content</label>
+    <textarea name="content" rows="12" required>{{ article.content }}</textarea>
+    <button type="submit" class="btn">Update</button>
+  </form>
+  <br>
+  <br>
+  <a href="/dashboard" class="btn btn-outline">Back to Dashboard</a>
+</main>
+</body>
+</html>

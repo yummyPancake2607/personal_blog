@@ -1,0 +1,45 @@
+<!-- templates/dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ request.url_for('static', path='style.css') }}" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand">Admin Dashboard</div>
+  <div class="nav-links">
+    <a href="/dashboard/add">Add Article</a>
+    <a href="/">Home</a>
+  </div>
+</nav>
+
+<main class="content-wrap">
+  <h2 class="section-title">All Articles</h2>
+  <table class="data-table">
+    <thead>
+      <tr><th>Title</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+      {% for article in articles %}
+      <tr>
+        <td>{{ article.title }}</td>
+        <td class="actions">
+          <a href="/dashboard/edit/{{ article.title }}" class="btn btn-outline">Edit</a>
+          <a href="/dashboard/delete/{{ article.title }}" class="btn btn-danger">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</main>
+
+<footer class="site-footer">
+  <p>Admin</p>
+</footer>
+
+</body>
+</html>

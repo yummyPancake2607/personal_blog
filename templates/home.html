@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Personal Blog</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ request.url_for('static', path='style.css') }}" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand">My Blog</div>
+  <a href="/">Home</a>
+</nav>
+
+<header class="hero-wrap">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1 class="headline">Welcome to<br />My Personal Blog</h1>
+      <p class="subhead">Sharing thoughts, stories, and projects — elegantly and interactively.</p>
+    </div>
+    <div class="hero-right">
+      <img src="{{ request.url_for('static', path='hero-avatar.jpg') }}" alt="portrait" class="avatar" />
+    </div>
+  </div>
+</header>
+
+<main class="content-wrap">
+  <section class="articles">
+    <h2 class="section-title">Latest Articles</h2>
+
+    {% if articles %}
+    <div class="card-grid">
+      {% for article in articles %}
+      <article class="card">
+
+        {% if article.image_url %}
+          <div class="card-media">
+            <img src="{{ article.image_url }}" alt="{{ article.title }}" />
+          </div>
+        {% else %}
+          <div class="card-media no-img">
+            <div class="card-fallback-title">{{ article.title }}</div>
+          </div>
+        {% endif %}
+
+        <div class="card-body">
+          <h3 class="card-title">{{ article.title }}</h3>
+          <p class="card-excerpt">{{ article.excerpt }}</p>
+          <a href="/article/{{ article.title }}" class="btn">Read More</a>
+        </div>
+
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p>No articles yet. Stay tuned!</p>
+    {% endif %}
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© 2025 My Personal Blog · Made with ❤️ by Lakshit</p>
+</footer>
+
+</body>
+</html>
