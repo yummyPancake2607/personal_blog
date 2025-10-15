@@ -138,4 +138,5 @@ This project is released under the **MIT License**. Feel free to reuse or modify
 ## ❤️ **Author**
 **Lakshit**  
 Made with love and FastAPI.
+project URL - https://roadmap.sh/projects/personal-blog
 
